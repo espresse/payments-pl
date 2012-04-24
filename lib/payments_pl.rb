@@ -93,7 +93,9 @@ module Payments
     # @return [Object] the Pos object
     def get_pos_by_id(id)
       id = id.to_i
+      p id
       @@pos_table.each do |k, v|
+	p v
         return v if v.pos_id == id
       end
       nil

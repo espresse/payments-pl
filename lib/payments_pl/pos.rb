@@ -51,9 +51,9 @@ module Payments
     # @return [String] new transaction url
     def new_transaction_url
       if @type == 'sms_premium'
-        return "https://www.platnosci.pl/paygw/#{@encoding}/NewSMS"
+        return "https://sandbox.payu.pl/paygw/#{@encoding}/NewSMS"
       else
-        return "https://www.platnosci.pl/paygw/#{@encoding}/NewPayment"
+        return "https://sandbox.payu.pl/paygw/#{@encoding}/NewPayment"
       end
     end
 
@@ -111,7 +111,7 @@ module Payments
     def send_request(method, session_id)
       url = path_for(method)
       data = prepare_data(session_id)
-      connection = Net::HTTP.new('www.platnosci.pl', 443)
+      connection = Net::HTTP.new('sandbox.payu.pl', 443)
       connection.use_ssl = true
 
       response = connection.start do |http|
